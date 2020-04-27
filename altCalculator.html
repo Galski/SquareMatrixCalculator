@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>       
+<link rel="stylesheet" type="text/css" href="SQMC_CSS.css" />
+</head>
+ 
+
+<body onload = "checkTheme();">
+
+<!-- Title -->
+<h1 id = "title">Text Based Square Matrix Calculator</h1>
+
+<!-- Choosing settings n such -->
+<div>
+    <div class = "container">
+        <a class = "item" href = "index.html">
+            Graphical <br> calculator
+        </a>
+        <button class = "item button" onclick="openHelpModal()">Help</button>
+        <button class = "item button" onclick="openSettingsModal()">Settings</button>       
+    </div>
+    <hr class = "solid">
+</div>
+
+<div id="settingsModal" class="modal">
+    <div class="modalContent" id = "settingsContent">
+        <p>Settings</p>
+        <input type="radio" id="dark" name="theme" value="darkTheme" onclick="switchTheme()" checked>
+        <label for="dark">Dark theme</label><br>
+        <input type="radio" id="light" name="theme" value="lightTheme" onclick="switchTheme()">
+        <label for="light">Light theme</label><br>
+        <div class = "container">
+            <button class = "item button" onclick="closeSettingsModal()">CLOSE</button>
+        </div>
+    </div> 
+</div>
+
+<div>
+    <div id = "inputBox1">
+        <p>Input:</p>
+        <input id = "inputBox2">
+
+        </input>
+        <button class = "button" onclick="textCalculate(document.getElementById('inputBox2').value)">CALCULATE</button>
+    </div>
+</div>
+
+<div id="helpModal" class="modal">
+    <div class="modalContent" id = "helpContent">
+        <p class = "item">Help</p>
+        <div class = "container">
+            <button class = "item button" onclick="closeHelpModal()">CLOSE</button>
+        </div>    
+    </div>
+</div>
+
+<!-- Results -->
+<div class = "container">
+    <div id = "resultBox">
+        <p>Results:</p>
+        <div id = "resultBox2"></div>
+    </div>
+</div> 
+
+
+<script type="text/javascript" src="SQMC_scripts.js"></script>
+</body>
+</html>

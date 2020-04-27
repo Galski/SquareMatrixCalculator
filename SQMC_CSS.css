@@ -1,0 +1,244 @@
+p{
+    font-size: 20px;
+}
+
+:root {
+    --color1: #222831;
+    --color2: #30475e;
+    --color3: #2a313c;
+    --color4: #ececec;
+    --color5: #f2a365;
+}
+
+[data-theme="light"] {
+    --color1: #ffffff;
+    --color2: #ececec;
+    --color3: #ececec;
+    --color4: #000000;
+    --color5: #ADD8E6;
+}
+
+#title{
+    text-align: center;
+}
+
+hr.solid{
+    color: 3px #30475e;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.row{
+    margin: 15px;
+}
+
+.inputCell {
+    width: 40px;
+    border-color: var(--color5);
+    border-radius: 0.25rem;
+}
+
+.centered {
+    text-align: center;
+}
+
+#top-container {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.item {
+    text-align: center;
+    margin: 0 5px;
+}
+
+.button {
+    background-color: var(--color2);
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    color: var(--color4);
+    padding: 10px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10;
+    cursor:pointer;
+    transition: 0.2s;
+}
+
+.button:hover {
+    filter: brightness(1.4);
+}
+
+.button:active {
+    filter: brightness(0.6);
+}
+
+.operatorButton{
+    background-color: var(--color2);
+    border: 2px solid black;
+    border-radius: 0.5rem;
+    color: var(--color4);
+    text-decoration: none;
+    display: inline-block;
+    cursor:pointer;
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 1rem;
+    font-size: 25px;
+    padding: 10px;
+    transition: 0.2s;
+}
+
+.operatorButton:hover {
+    filter: brightness(1.4);
+}
+
+.operatorButton:active {
+    filter: brightness(0.6);
+}
+
+
+#matrixSizeBox {
+    width: 320px;
+    height: 120px;
+    padding: 10px;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 4px rgba(0,0,0,3);
+    margin: auto;
+}
+
+#resultBox {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 800px;
+    height: 150px;
+    padding: 10px;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 4px rgba(0,0,0,3);
+    margin: auto;
+}
+#resultBox2 {
+    font-family: monospace;
+    font-size: 18px;
+    width: 650px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 4px rgba(0,0,0,3);
+    margin: auto;
+    background-color: var(--color3);
+}
+
+#inputBox1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 800px;
+    height: 75px;
+    padding: 10px;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 4px rgba(0,0,0,3);
+    margin: auto;
+}
+#inputBox2 {
+    width: 575px;
+    height: 25px;
+    padding: 10px;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 4px rgba(0,0,0,3);
+    border-color: var(--color5);
+    margin: auto;
+    background-color: var(--color3);
+    color: #ffffff;
+}
+
+#calculatorContainer {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+}
+
+#operatorContainer {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.matrixBox {
+    width: 300px;
+    height:250px;
+    padding: 10px;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 4px rgba(0,0,0,1);
+    margin: 10px;
+}
+
+.matrixBox:hover {
+    box-shadow: 0px 0px 8px rgba(0,0,0,2); 
+}
+
+body {
+    background-color: var(--color1);
+    color:  var(--color4);
+}
+
+input:disabled{
+    background-color: var(--color1);
+    border-color: var(--color1);
+}
+
+a:link {
+    color: blue;
+}
+
+a:visited {
+    color: #5a42f5;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modalContent {
+    background-color: var(--color3);
+    border-radius: 0.5rem;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+#settingsContent {
+    width: 30%;
+}
+
+#helpContent {
+    width: 50%;
+}
+
+.helpModalContent {
+    background-color: var(--color3);
+    border-radius: 0.5rem;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
