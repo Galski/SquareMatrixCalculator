@@ -8,8 +8,8 @@ p{
     --color3: #2a313c;
     --color4: #ececec;
     --color5: #f2a365;
-    --color6: rgb(59, 59, 255);
-    --color7: #4f42a3;
+    --color6: rgb(87, 125, 250);
+    --color7: #6a58e0;
 }
 
 [data-theme="light"] {
@@ -43,6 +43,8 @@ hr.solid{
     width: 40px;
     border-color: var(--color5);
     border-radius: 0.25rem;
+    background-color: rgb(221, 221, 221);
+    text-align: center;
 }
 
 .centered {
