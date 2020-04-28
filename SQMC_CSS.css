@@ -8,6 +8,8 @@ p{
     --color3: #2a313c;
     --color4: #ececec;
     --color5: #f2a365;
+    --color6: rgb(59, 59, 255);
+    --color7: #4f42a3;
 }
 
 [data-theme="light"] {
@@ -16,6 +18,8 @@ p{
     --color3: #ececec;
     --color4: #000000;
     --color5: #ADD8E6;
+    --color6: blue;
+    --color6: #5a42f5;
 }
 
 #title{
@@ -64,7 +68,6 @@ hr.solid{
     padding: 10px;
     text-decoration: none;
     display: inline-block;
-    font-size: 10;
     cursor:pointer;
     transition: 0.2s;
 }
@@ -100,7 +103,6 @@ hr.solid{
 .operatorButton:active {
     filter: brightness(0.6);
 }
-
 
 #matrixSizeBox {
     width: 320px;
@@ -197,7 +199,7 @@ input:disabled{
 }
 
 a:link {
-    color: blue;
+    color: var(--color6);
 }
 
 a:visited {
@@ -213,7 +215,6 @@ a:visited {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
 }
 
@@ -223,7 +224,6 @@ a:visited {
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
 }
 
 #settingsContent {

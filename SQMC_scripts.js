@@ -1,7 +1,14 @@
-var currentSize = 5;
+/*
+//
+// The JS file for the Square Matrix Calculator
+// 
+*/
 
+
+var currentSize = 5;
 var textSizeCheck = 0;
 
+//Resizes the matrices
 function resize(size) {
     containerLeft = document.getElementById("matrixContainerLeft");
     containerRight = document.getElementById("matrixContainerRight");     
@@ -21,6 +28,7 @@ function resize(size) {
     currentSize = size;
 }
 
+//Clears the matrices
 function clearMatrix(buttonID) {
     if (buttonID == "leftButton") {
         containerLeft = document.getElementById("matrixContainerLeft");
@@ -56,13 +64,13 @@ function fillMatrix() {
     
 }
 
+
+//Calculates the text based 
 function textCalculate(textBasedMatrixString) {
     splitString = textBasedMatrixString.split(" ");
-    console.log(splitString);
     
     matrixLeft = checkMatrixValidity(splitString[0]);
     firstMatrixSize = textSizeCheck;
-    console.log(textSizeCheck);
     matrixRight = checkMatrixValidity(splitString[2]);
 
     if (firstMatrixSize != textSizeCheck) {
@@ -71,8 +79,6 @@ function textCalculate(textBasedMatrixString) {
     }
 
     calculationType = splitString[1];
-    console.log(calculationType);
-    console.log(matrixLeft)
 
     if (calculationType == '+') {
         console.log("Calculation is a +");
@@ -125,12 +131,12 @@ function textCalculate(textBasedMatrixString) {
         }
 
     } else {
-        throw "Error!";
+        openErrorModal("Invalid calculation type!");
     }
     document.getElementById("resultBox2").innerHTML = printTextMatrix(result);
-
 }
 
+//Creates the matrixstring from the cell
 function createMatrix() {
     containerLeft = document.getElementById("matrixContainerLeft");
     containerRight = document.getElementById("matrixContainerRight");
@@ -177,29 +183,42 @@ function createMatrix() {
     matrices.push(matrixLeft);
     matrices.push(matrixRight);
 
-
-    matrixStringComplete = matrixStringLeft.concat("&" ,matrixStringRight);
+    //matrixStringComplete = matrixStringLeft.concat("&" ,matrixStringRight);
     return matrices;
 }
 
+//Prints out the matrix
 function printMatrix(matrix) {
     string = '';
-    console.log(matrix);
+    columnDigitAmount = 0;
+    var length;
+    for (z = 0; z < currentSize; z++) {
+        for (f = 0; f < currentSize; f++) {
+            length = ("" + matrix[z][f]).length
+            if (matrix[z][f] <= 0) {
+                length++;
+            }
+            if (length > columnDigitAmount) {
+                columnDigitAmount = length;      
+            }
+        }
+    }
+
     for (i = 0; i < currentSize; i++) {
         for (k = 0; k < currentSize; k++) {
-            string = string + matrix[i][k] + " ";
-            console.log(matrix[i][k].toString().length)
-            if (matrix[i][k].toString().length == 1) {
+            length = ("" + matrix[i][k]).length
+            string = string + matrix[i][k];
+            string = string + " ";          
+            for (j = length; j < columnDigitAmount; j++) {
                 string = string + "&nbsp";
             }
-            console.log(string)
         }
         string = string + "<br>"
     }
-    console.log(string);
     return string;
 }
 
+//Prints out the text matrix string
 function printTextMatrix(matrix) {
     string = '[';
     console.log(matrix);
@@ -217,7 +236,8 @@ function printTextMatrix(matrix) {
     return string;
 }
 
-//Math
+
+//Adds two matrices together
 function addMatrices() {
     matrices = createMatrix();
 
@@ -239,6 +259,7 @@ function addMatrices() {
     document.getElementById("resultBox2").innerHTML = printMatrix(result);
 }
 
+//Subtracts one matrix from another
 function subtractMatrices() {
     matrices = createMatrix();
 
@@ -260,6 +281,7 @@ function subtractMatrices() {
     document.getElementById("resultBox2").innerHTML = printMatrix(result);
 }
 
+//Multiplies the matrices together
 function multiplyMatrices() {
     matrices = createMatrix();
 
@@ -289,6 +311,7 @@ function multiplyMatrices() {
 }
 
 
+//This function validates matrices
 function checkMatrixValidity(matrixString){
     var c;
     var rowAmount = 0, columnAmount = 0, columnFirstAmount = 0, tempInt = 0;
@@ -351,8 +374,6 @@ function checkMatrixValidity(matrixString){
         columnAmount = 0;
         rowAmount += 1;
         i = i + 1;
-        //For cases like [[1,2][1,2]
-        //if (matrixString.charAt(i+1) == EOF) { throw "Error6"; }
         console.log(matrix);
     }
     
@@ -386,6 +407,8 @@ function closeHelpModal() {
     document.getElementById("helpModal").style.display = "none";
 }
 
+
+//Handles closing the modals if user clicks outside the modal
 window.onclick = function(event) {
     modal1 = document.getElementById("settingsModal")
     modal2 = document.getElementById("helpModal")
@@ -423,7 +446,6 @@ function switchTheme() {
         document.documentElement.setAttribute('data-theme', 'dark');
     }
 }
-
 
 function checkTheme() {
     if (localStorage.getItem('theme') == 'light') {

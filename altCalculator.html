@@ -4,7 +4,6 @@
 <head>       
 <link rel="stylesheet" type="text/css" href="SQMC_CSS.css" />
 </head>
- 
 
 <body onload = "checkTheme();">
 
@@ -23,6 +22,7 @@
     <hr class = "solid">
 </div>
 
+<!-- Modal for the Settings menu -->
 <div id="settingsModal" class="modal">
     <div class="modalContent" id = "settingsContent">
         <p>Settings</p>
@@ -36,16 +36,17 @@
     </div> 
 </div>
 
+<!-- Input box -->
 <div>
     <div id = "inputBox1">
         <p>Input:</p>
         <input id = "inputBox2">
-
         </input>
         <button class = "button" onclick="textCalculate(document.getElementById('inputBox2').value)">CALCULATE</button>
     </div>
 </div>
 
+<!-- Modal for the help menu -->
 <div id="helpModal" class="modal">
     <div class="modalContent" id = "helpContent">
         <p>
@@ -70,9 +71,10 @@
     </div>
 </div> 
 
+<!-- Error messages -->
 <div id="errorModal" class="modal">
     <div class="modalContent" id = "errorModalContent">
-        <p class = "item" id = "errorText">ERROR</p>
+        <p id = "errorText">ERROR</p>
         <div class = "container" style="margin: 0.5rem;">
             <button class = "item button" onclick="closeErrorModal()">OK</button>
         </div>    
