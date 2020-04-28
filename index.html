@@ -32,16 +32,22 @@
         <input type="radio" id="light" name="theme" value="lightTheme" onclick="switchTheme()">
         <label for="light">Light theme</label><br>
         <div class = "container">
-            <button class = "item button" onclick="closeSettingsModal()">CLOSE</button>
+            <button class = "item button" onclick="closeSettingsModal()">OK</button>
         </div>
     </div> 
 </div>
 
 <div id="helpModal" class="modal">
     <div class="modalContent" id = "helpContent">
-        <p class = "item">Help</p>
+        <p>
+            You can only have integers inside the cells of the matrices. <br>
+            Both matrices must be completely filled. <br>
+            You perform the calcualtion by clicking on the plus, the minus or the multiply button. <br>
+            By pressing the "Clear matrix" you can completely clear a matrix. <br>
+            You can go to the text based calculator by clicking the "Text based calculator" hyperlink. <br>
+        </p>
         <div class = "container">
-            <button class = "item button" onclick="closeHelpModal()">CLOSE</button>
+            <button class = "item button" onclick="closeHelpModal()">OK</button>
         </div>    
     </div>
 </div>
@@ -158,7 +164,17 @@
         <p>Results:</p>
         <div id = "resultBox2"></div>
     </div>
-</div> 
+</div>
+
+<div id="errorModal" class="modal">
+    <div class="modalContent" id = "errorModalContent">
+        <p class = "item" id = "errorText">ERROR</p>
+        <div class = "container" style="margin: 0.5rem;">
+            <button class = "item button" onclick="closeErrorModal()">OK</button>
+        </div>    
+    </div>
+</div>
+
 <script type="text/javascript" src="SQMC_scripts.js"></script>
 </body>
 </html>

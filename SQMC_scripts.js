@@ -66,7 +66,8 @@ function textCalculate(textBasedMatrixString) {
     matrixRight = checkMatrixValidity(splitString[2]);
 
     if (firstMatrixSize != textSizeCheck) {
-        throw "Error!";
+        openErrorModal("Matrices are different sizes!");
+        throw "Error9";
     }
 
     calculationType = splitString[1];
@@ -140,6 +141,10 @@ function createMatrix() {
     for (let i = 0; i < currentSize; i++) {
         matrixStringLeft = matrixStringLeft.concat("[");
         for(let o = 0; o < currentSize; o++) {
+            if (containerLeft.children[i].children[o].value == '') {
+                openErrorModal("There is an empty cell or multiple empty cells in one of the matrices!");
+                throw "Error8";
+            }
             matrixStringLeft = matrixStringLeft.concat(containerLeft.children[i].children[o].value);
             if (o < currentSize - 1) {
                 matrixStringLeft = matrixStringLeft.concat(",");
@@ -152,6 +157,10 @@ function createMatrix() {
     for (let i = 0; i < currentSize; i++) {
         matrixStringRight = matrixStringRight.concat("[");
         for(let o = 0; o < currentSize; o++) {     
+            if (containerRight.children[i].children[o].value == '') {
+                openErrorModal("There is an empty cell or multiple empty cells in one of the matrices!");
+                throw "Error8";
+            }
             matrixStringRight = matrixStringRight.concat(containerRight.children[i].children[o].value);
             if (o < currentSize - 1) {
                 matrixStringRight = matrixStringRight.concat(",");
@@ -192,20 +201,19 @@ function printMatrix(matrix) {
 }
 
 function printTextMatrix(matrix) {
-    string = '';
+    string = '[';
     console.log(matrix);
     for (i = 0; i < textSizeCheck; i++) {
+        string = string + '[';
         for (k = 0; k < textSizeCheck; k++) {
-            string = string + matrix[i][k] + " ";
-            console.log(matrix[i][k].toString().length)
-            if (matrix[i][k].toString().length == 1) {
-                string = string + "&nbsp";
-            }
-            console.log(string)
+            string = string + matrix[i][k];
+            if (k < textSizeCheck - 1) {
+                string = string + ',';
+            }  
         }
-        string = string + "<br>"
+        string = string + ']';
     }
-    console.log(string);
+    string = string + ']';
     return string;
 }
 
@@ -292,6 +300,7 @@ function checkMatrixValidity(matrixString){
     var row = [];
     //If the string doesn't start with [ it is invalid
     if (matrixString.charAt(0) != '[') {
+        openErrorModal("Invalid matrix, consult the help button for more information!");
         throw "Error1";
     }
 
@@ -321,20 +330,20 @@ function checkMatrixValidity(matrixString){
                         i = i + 1;
                     }
                     row.push(tempInt);
-                } else { console.log(matrixString.charAt(i+1)); throw "Error2"; }
+                } else { console.log(matrixString.charAt(i+1)); openErrorModal("Invalid matrix, consult the help button for more information!"); throw "Error2"; }
                 columnAmount += 1;
                 if (matrixString.charAt(i+1) == ',') {
                     i = i + 1;
-                } else if (matrixString.charAt(i+1) != ']') { console.log(matrixString.charAt(i+1)); throw "Error3"; }
+                } else if (matrixString.charAt(i+1) != ']') { console.log(matrixString.charAt(i+1)); openErrorModal("Invalid matrix, consult the help button for more information!"); throw "Error3"; }
 
             }
-        } else { throw "Error4"; }
+        } else {openErrorModal("Invalid matrix, consult the help button for more information!"); throw "Error4"; }
 
         if (!columnCheck) {
             columnFirstAmount = columnAmount;
             columnCheck = true;
         } else {
-            if (columnFirstAmount != columnAmount) { throw "Error5"; }
+            if (columnFirstAmount != columnAmount) { openErrorModal("Invalid matrix, consult the help button for more information!"); throw "Error5"; }
         }
         console.log(row);
         matrix.push(row);
@@ -349,6 +358,7 @@ function checkMatrixValidity(matrixString){
     
     //Final check
     if (c != ']' || (rowAmount != columnFirstAmount)) {
+        openErrorModal("Invalid matrix, consult the help button for more information!");
         throw "Error7";
     }
 
@@ -379,14 +389,27 @@ function closeHelpModal() {
 window.onclick = function(event) {
     modal1 = document.getElementById("settingsModal")
     modal2 = document.getElementById("helpModal")
+    errorModal = document.getElementById("errorModal");
     if (event.target == modal1) {
         modal1.style.display = "none";
     }
     if (event.target == modal2) {
         modal2.style.display = "none";
     }
+    if (event.target == errorModal) {
+        errorModal.style.display = "none";
+    }
 }
 
+
+//Error messages
+function openErrorModal(errorMessage) {
+    document.getElementById("errorModal").style.display = "block";
+    document.getElementById("errorText").innerText = errorMessage;
+}
+function closeErrorModal() {
+    document.getElementById("errorModal").style.display = "none";
+}
 
 
 //Themes
