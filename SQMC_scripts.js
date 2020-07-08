@@ -4,7 +4,7 @@
 // 
 */
 
-
+//Variables
 var currentSize = 5;
 var textSizeCheck = 0;
 
@@ -47,7 +47,7 @@ function clearMatrix(buttonID) {
     }
 }
 
-//Command for testing
+//Command for testing, fills the current matrix with random integers between 1-10
 function fillMatrix() {
     containerLeft = document.getElementById("matrixContainerLeft");
     containerRight = document.getElementById("matrixContainerRight");
@@ -65,7 +65,7 @@ function fillMatrix() {
 }
 
 
-//Calculates the text based 
+//Calculates the text based matrix calculation
 function textCalculate(textBasedMatrixString) {
     splitString = textBasedMatrixString.split(" ");
     
@@ -136,7 +136,7 @@ function textCalculate(textBasedMatrixString) {
     document.getElementById("resultBox2").innerHTML = printTextMatrix(result);
 }
 
-//Creates the matrixstring from the cell
+//Creates the matrix string from the cells
 function createMatrix() {
     containerLeft = document.getElementById("matrixContainerLeft");
     containerRight = document.getElementById("matrixContainerRight");
@@ -310,8 +310,9 @@ function multiplyMatrices() {
     document.getElementById("resultBox2").innerHTML = printMatrix(result);
 }
 
-
 //This function validates matrices
+//It's translated from a C++ matrix validation function
+//So if it looks weird, it's probably because of that
 function checkMatrixValidity(matrixString){
     var c;
     var rowAmount = 0, columnAmount = 0, columnFirstAmount = 0, tempInt = 0;
